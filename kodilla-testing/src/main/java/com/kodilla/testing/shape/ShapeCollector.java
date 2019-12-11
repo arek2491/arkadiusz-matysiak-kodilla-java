@@ -15,10 +15,6 @@ public class ShapeCollector {
         figures.add(shape);
     }
 
-    public void removeFigure(Shape shape){
-        figures.remove(shape);
-    }
-
     public Shape getFigure(int n){
         return figures.get(n);
     }
@@ -33,10 +29,6 @@ public class ShapeCollector {
         return true;
     }
 
-    public int figuresSize() {
-
-        return figures.size();
-    }
 
 
 }

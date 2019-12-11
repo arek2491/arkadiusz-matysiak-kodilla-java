@@ -1,14 +1,10 @@
-package shape;
+package com.kodilla.testing.shape;
 
-import com.kodilla.testing.shape.Cirqle;
-import com.kodilla.testing.shape.Shape;
-import com.kodilla.testing.shape.ShapeCollector;
 import org.junit.After;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 public class ShapeCollectorTestSuite {
