@@ -24,9 +24,8 @@ public class ShapeCollector {
         return figures;
     }
 
-    public boolean removeShape(Shape shape) {
-
-        return true;
+    public void removeShape(Shape shape) {
+        figures.remove(shape);
     }
 
 
