@@ -145,7 +145,7 @@ public class BoardTestSuite {
     }
 
     @Test
-    public void testAddTaskListAverageWorkingOnTaskEasyVeriosn() {
+    public void testAddTaskListAverageWorkingOnTaskEasyVersion() {
 
         Board project = prepareTestData();
 
