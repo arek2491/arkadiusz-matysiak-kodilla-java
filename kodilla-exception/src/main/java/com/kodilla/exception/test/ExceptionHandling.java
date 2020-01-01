@@ -1,7 +1,5 @@
 package com.kodilla.exception.test;
 
-import com.kodilla.exception.io.MyException;
-
 public class ExceptionHandling  {
 
     public void throwException() throws MyException {
