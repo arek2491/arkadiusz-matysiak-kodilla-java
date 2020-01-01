@@ -180,8 +180,8 @@ public class BoardTestSuite {
                 .map(n -> LocalDate.now().getDayOfYear() - n.getCreated().getDayOfYear())
                 .collect(toList());
 
-       double average =  IntStream.range(0, tempList.size())
-               .map(i -> tempList.get(i))
+       double average = tempList.stream()
+               .mapToInt(integer -> integer)
                .average()
                .getAsDouble();
 
