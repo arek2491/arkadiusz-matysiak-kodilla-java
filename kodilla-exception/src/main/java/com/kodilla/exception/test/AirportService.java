@@ -16,7 +16,7 @@ public class AirportService {
         testFlight.put("Malta", true);
 
 
-            if (testFlight.containsKey(flight.getArrivalAirport())) {
+            if (testFlight.containsKey(flight.getArrivalAirport()) && testFlight.get(flight.getArrivalAirport())) {
                 System.out.println("Flight available " + flight.getArrivalAirport());
             }
             else {
