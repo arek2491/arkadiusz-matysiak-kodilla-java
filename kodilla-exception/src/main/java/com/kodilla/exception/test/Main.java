@@ -4,18 +4,24 @@ public class Main {
 
     public static void main(String [] args) {
 
+        Flight flight1 = new Flight("Moscow" , "Dublin");
+        Flight flight2 = new Flight("Dublin" , "Moscow");
+        Flight flight3 = new Flight("Warsaw" , "Berlin");
         AirportService airportService = new AirportService();
 
 
         try {
-            airportService.findFlight(new Flight("Moscow" , "Dublin"));
-            airportService.findFlight(new Flight("New York" , "London"));
-            airportService.findFlight(new Flight("London" , "Poznan"));
-            airportService.findFlight(new Flight("Unknown Airport" , "Malta"));
+            airportService.findFlight(flight1);
+            airportService.findFlight(flight2);
+            airportService.findFlight(flight3);
+
 
         }
         catch(RouteNotFoundException e ) {
-            System.out.println("Flight not found!");
+            System.out.println("Flight not found");
+        }
+        finally {
+            System.out.println("End of search");
         }
 
 

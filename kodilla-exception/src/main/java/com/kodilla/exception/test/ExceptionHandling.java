@@ -12,7 +12,7 @@ public class ExceptionHandling  {
         catch(Exception e) {
             throw new MyException();
         }
-        finally{
+        finally {
             System.out.println("End of the program...");
         }
 

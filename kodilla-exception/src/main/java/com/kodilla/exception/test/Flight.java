@@ -1,6 +1,5 @@
 package com.kodilla.exception.test;
 
-import java.util.Objects;
 
 public class Flight {
 

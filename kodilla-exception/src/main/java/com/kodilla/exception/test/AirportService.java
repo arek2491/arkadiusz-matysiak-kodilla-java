@@ -1,6 +1,8 @@
 package com.kodilla.exception.test;
 
+
 import java.util.HashMap;
+
 
 
 public class AirportService {
@@ -13,21 +15,16 @@ public class AirportService {
         testFlight.put("Poznan", true);
         testFlight.put("Malta", true);
 
-        try {
-            if (testFlight.get(flight.getArrivalAirport())) {
-                System.out.println("Flight available");
-            } else {
+
+            if (testFlight.containsKey(flight.getArrivalAirport())) {
+                System.out.println("Flight available " + flight.getArrivalAirport());
+            }
+            else {
                 throw new RouteNotFoundException();
             }
-        }
-        catch(NullPointerException e) {
-            System.out.println("Flight not found");
-        }
-        finally {
-            System.out.println("End of search");
-        }
+
+
+
+
     }
-
-
-
 }
