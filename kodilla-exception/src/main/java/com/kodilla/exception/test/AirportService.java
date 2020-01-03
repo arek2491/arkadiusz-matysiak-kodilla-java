@@ -22,6 +22,9 @@ public class AirportService {
             else {
                 throw new RouteNotFoundException();
             }
+            if(flight.getDepartureAirport().equals(flight.getArrivalAirport())){
+                throw new RouteNotFoundException();
+            }
 
 
 

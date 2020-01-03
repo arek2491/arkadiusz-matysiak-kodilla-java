@@ -5,8 +5,8 @@ public class Main {
     public static void main(String [] args) {
 
         Flight flight1 = new Flight("Moscow" , "Dublin");
-        Flight flight2 = new Flight("Dublin" , "Moscow");
-        Flight flight3 = new Flight("Berlin" , "Malta");
+        Flight flight2 = new Flight("Frankfurt" , "Moscow");
+        Flight flight3 = new Flight("Greece" , "Malta");
         Flight flight4 = new Flight("Warsaw" , "Berlin");
         AirportService airportService = new AirportService();
 
@@ -16,6 +16,7 @@ public class Main {
             airportService.findFlight(flight2);
             airportService.findFlight(flight3);
             airportService.findFlight(flight4);
+
 
 
         }
