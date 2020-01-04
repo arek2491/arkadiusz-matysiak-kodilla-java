@@ -17,7 +17,7 @@ public class AirportService {
 
 
             if (testFlight.containsKey(flight.getArrivalAirport()) && testFlight.get(flight.getArrivalAirport())
-                && testFlight.containsKey(flight.getDepartureAirport())) {
+                && testFlight.containsKey(flight.getDepartureAirport()) && testFlight.get(flight.getDepartureAirport())) {
                 System.out.println("Flight available " + flight.getArrivalAirport());
             }
             else {
