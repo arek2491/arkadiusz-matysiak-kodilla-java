@@ -16,18 +16,18 @@ public class AirportService {
         testFlight.put("Malta", true);
 
 
-            if (testFlight.containsKey(flight.getArrivalAirport()) && testFlight.get(flight.getArrivalAirport())) {
+            if (testFlight.containsKey(flight.getArrivalAirport()) && testFlight.get(flight.getArrivalAirport())
+                && testFlight.containsKey(flight.getDepartureAirport())) {
                 System.out.println("Flight available " + flight.getArrivalAirport());
             }
             else {
                 throw new RouteNotFoundException();
             }
+
+
             if(flight.getDepartureAirport().equals(flight.getArrivalAirport())){
                 throw new RouteNotFoundException();
             }
-
-
-
 
     }
 }
