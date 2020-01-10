@@ -8,8 +8,7 @@ public class Application {
         executor.execute();
 
         OrderRetreiever orderRetreiever = new OrderRetreiever();
-        Supplier supplier1 = new Supplier("SuperExtraFoodShop", orderRetreiever.retreive());
-        OrderExecute order2 = new NewSupplier(supplier1);
+        OrderExecute order2 = new NewSupplier("ExtraFoodShop" , orderRetreiever.retreive());
         OrderExecutor executor1 = new OrderExecutor(order2);
         executor1.execute();
 
