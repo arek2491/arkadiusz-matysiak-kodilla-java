@@ -16,10 +16,12 @@ public class SearchFlight {
                 .forEach(System.out::println);
     }
 
-    public void searchByThroughCity(String city) {
+    public void searchByThroughCity(String startCity, String throughCity, String landingCity) {
         flightList.getFlightList().stream()
                 .limit(flightList.getFlightList().size())
-                .filter(flight -> flight.getThroughCity().equals(city))
+                .filter(flight -> flight.getThroughCity().equals(throughCity))
+                .filter(flight -> flight.getStartCity().equals(startCity))
+                .filter(flight -> flight.getLandingCity().equals(landingCity))
                 .forEach(System.out::println);
     }
 

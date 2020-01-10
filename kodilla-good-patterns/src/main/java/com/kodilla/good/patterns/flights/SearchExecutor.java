@@ -16,9 +16,11 @@ public class SearchExecutor {
         String cityName = scanner.nextLine();
         System.out.println("Loty z " + cityName + ": ");
         searchFlight.searchByStartCity(cityName);
-        System.out.println("Loty przez " + cityName + ": ");
-        searchFlight.searchByThroughCity(cityName);
         System.out.println("Loty do: " + cityName + ": ");
         searchFlight.searchByLandingCity(cityName);
+
+        System.out.println("Wyszukane loty: ");
+        searchFlight.searchByThroughCity("Gdańsk" , "Kraków" , "Wrocław");
+
     }
 }
