@@ -15,10 +15,10 @@ public class SearchExecutor {
         System.out.println("Podaj miasto: ");
         String cityName = scanner.nextLine();
         System.out.println("Loty z " + cityName + ": ");
-        searchFlight.SearchByStartCity(cityName);
+        searchFlight.searchByStartCity(cityName);
         System.out.println("Loty przez " + cityName + ": ");
-        searchFlight.SearchByThroughCity(cityName);
+        searchFlight.searchByThroughCity(cityName);
         System.out.println("Loty do: " + cityName + ": ");
-        searchFlight.SearchByLandingCity(cityName);
+        searchFlight.searchByLandingCity(cityName);
     }
 }

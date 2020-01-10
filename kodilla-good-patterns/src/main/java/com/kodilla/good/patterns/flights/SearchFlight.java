@@ -9,21 +9,21 @@ public class SearchFlight {
         flightList = new FlightList();
     }
 
-    public void SearchByStartCity(String city) {
+    public void searchByStartCity(String city) {
         flightList.getFlightList().stream()
                 .limit(flightList.getFlightList().size())
                 .filter(flight -> flight.getStartCity().equals(city))
                 .forEach(System.out::println);
     }
 
-    public void SearchByThroughCity(String city) {
+    public void searchByThroughCity(String city) {
         flightList.getFlightList().stream()
                 .limit(flightList.getFlightList().size())
                 .filter(flight -> flight.getThroughCity().equals(city))
                 .forEach(System.out::println);
     }
 
-    public void SearchByLandingCity(String city) {
+    public void searchByLandingCity(String city) {
         flightList.getFlightList().stream()
                 .limit(flightList.getFlightList().size())
                 .filter(flight -> flight.getLandingCity().equals(city))
