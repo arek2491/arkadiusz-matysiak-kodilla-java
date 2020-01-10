@@ -42,7 +42,7 @@ public class AvailableFlights {
         flight5 = new Flight("Warszawa", "Poznań", "Szczecin", timeFlight5);
         flight6 = new Flight("Warszawa", "Poznań", "Szczecin", timeFlight6);
         flight7 = new Flight("Wrocław", "Warszawa", "Gdańsk", timeFlight7);
-        flight8 = new Flight("Wrocław", "Warszawa", "Gdańsk", timeFlight1);
-        flight9 = new Flight("Wrocław", "Warszawa", "Gdańsk", timeFlight1);
+        flight8 = new Flight("Wrocław", "Warszawa", "Gdańsk", timeFlight8);
+        flight9 = new Flight("Wrocław", "Warszawa", "Gdańsk", timeFlight9);
     }
 }
