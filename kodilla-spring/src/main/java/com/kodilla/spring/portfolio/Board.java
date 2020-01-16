@@ -1,5 +1,6 @@
 package com.kodilla.spring.portfolio;
 
+
 public final class Board {
 
     private TaskList toDoList;
