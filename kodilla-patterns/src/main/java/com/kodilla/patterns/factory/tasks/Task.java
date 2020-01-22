@@ -4,5 +4,5 @@ public interface Task {
 
     String executeTask();
     String getTaskName();
-    boolean isTaskExecuted(double quantityCheck);
+    boolean isTaskExecuted();
 }

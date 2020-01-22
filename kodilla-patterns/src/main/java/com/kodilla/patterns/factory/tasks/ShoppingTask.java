@@ -5,6 +5,7 @@ public class ShoppingTask implements Task {
     private String taskName;
     private String whatToBuy;
     private double quantity;
+    private static ShoppingTask shoppingTaskInstance = null;
 
     public ShoppingTask(String taskName, String whatToBuy, double quantity) {
         this.taskName = taskName;
@@ -12,12 +13,11 @@ public class ShoppingTask implements Task {
         this.quantity = quantity;
     }
 
-    public double getQuantity() {
-        return quantity;
-    }
-
-    public String getWhatToBuy() {
-        return whatToBuy;
+    public ShoppingTask getInstance() {
+        if(shoppingTaskInstance == null) {
+            shoppingTaskInstance = new ShoppingTask(taskName, whatToBuy, quantity);
+        }
+        return shoppingTaskInstance;
     }
 
     @Override
@@ -31,16 +31,25 @@ public class ShoppingTask implements Task {
     }
 
     @Override
-    public boolean isTaskExecuted(double quantityCheck) {
+    public boolean isTaskExecuted() {
 
         boolean isDoneFlag;
 
-        if(quantityCheck == getQuantity()) {
-            isDoneFlag = true;
-        }else {
+        if(getInstance() == null) {
             isDoneFlag = false;
+        } else {
+            isDoneFlag = true;
         }
         return isDoneFlag;
     }
+
+    public double getQuantity() {
+        return quantity;
+    }
+
+    public String getWhatToBuy() {
+        return whatToBuy;
+    }
+
 
 }
