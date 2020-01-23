@@ -17,7 +17,7 @@ public class PaintingTask implements Task{
     @Override
     public String executeTask() {
         wasExecuted = true;
-        return "Executing driving task:";
+        return "Executing: " + getTaskName();
     }
 
     @Override
