@@ -5,19 +5,19 @@ public final class DrivingTask implements Task {
     private String taskName;
     private String where;
     private String using;
-    private boolean wasExecuted;
+    private boolean wasExecuted = false;
 
     public DrivingTask(String taskName, String where, String using) {
         this.taskName = taskName;
         this.where = where;
         this.using = using;
-        this.wasExecuted = false;
     }
 
 
 
     @Override
     public String executeTask() {
+        wasExecuted = true;
         return "Executing driving task:";
     }
 
@@ -28,8 +28,7 @@ public final class DrivingTask implements Task {
 
     @Override
     public boolean isTaskExecuted() {
-        wasExecuted = true;
-        return true;
+        return wasExecuted;
     }
 
     public String getWhere() {

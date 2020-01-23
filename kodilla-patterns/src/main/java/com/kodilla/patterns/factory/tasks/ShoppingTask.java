@@ -5,13 +5,13 @@ public class ShoppingTask implements Task {
     private String taskName;
     private String whatToBuy;
     private double quantity;
-    private boolean wasExecuted;
+    private boolean wasExecuted = false;
 
     public ShoppingTask(String taskName, String whatToBuy, double quantity) {
         this.taskName = taskName;
         this.whatToBuy = whatToBuy;
         this.quantity = quantity;
-        this.wasExecuted = false;
+
     }
 
     @Override
@@ -21,14 +21,13 @@ public class ShoppingTask implements Task {
 
     @Override
     public String executeTask() {
+        wasExecuted = true;
         return "Execute: " + getTaskName();
     }
 
     @Override
     public boolean isTaskExecuted() {
-
-        wasExecuted = true;
-        return true;
+        return wasExecuted;
     }
 
     public double getQuantity() {
