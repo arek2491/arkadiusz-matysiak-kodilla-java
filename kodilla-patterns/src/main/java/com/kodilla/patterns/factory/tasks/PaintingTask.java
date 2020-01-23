@@ -5,19 +5,13 @@ public class PaintingTask implements Task{
     private String taskName;
     private String color;
     private String whatToPaint;
-    private static PaintingTask paintingTaskInstance = null;
+    private boolean wasExecuted;
 
     public PaintingTask(String taskName, String color, String whatToPaint) {
         this.taskName = taskName;
         this.color = color;
         this.whatToPaint = whatToPaint;
-    }
-
-    public PaintingTask getInstance() {
-        if(paintingTaskInstance == null) {
-            paintingTaskInstance = new PaintingTask(taskName, color, whatToPaint);
-        }
-        return paintingTaskInstance;
+        this.wasExecuted = false;
     }
 
     @Override
@@ -32,14 +26,9 @@ public class PaintingTask implements Task{
 
     @Override
     public boolean isTaskExecuted() {
-        boolean isDoneFlag;
 
-        if(getInstance() == null) {
-            isDoneFlag = false;
-        } else {
-            isDoneFlag = true;
-        }
-        return isDoneFlag;
+        wasExecuted = true;
+        return true;
     }
 
     public String getColor() {

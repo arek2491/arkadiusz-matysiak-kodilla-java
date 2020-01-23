@@ -5,20 +5,16 @@ public final class DrivingTask implements Task {
     private String taskName;
     private String where;
     private String using;
-    private static DrivingTask drivingTaskInstance = null;
+    private boolean wasExecuted;
 
     public DrivingTask(String taskName, String where, String using) {
         this.taskName = taskName;
         this.where = where;
         this.using = using;
+        this.wasExecuted = false;
     }
 
-    public DrivingTask getInstance() {
-        if(drivingTaskInstance == null) {
-            drivingTaskInstance = new DrivingTask(taskName, where, using);
-        }
-        return drivingTaskInstance;
-    }
+
 
     @Override
     public String executeTask() {
@@ -32,15 +28,8 @@ public final class DrivingTask implements Task {
 
     @Override
     public boolean isTaskExecuted() {
-
-        boolean isDoneFlag;
-
-      if(getInstance() == null) {
-          isDoneFlag = false;
-      } else {
-          isDoneFlag = true;
-      }
-      return isDoneFlag;
+        wasExecuted = true;
+        return true;
     }
 
     public String getWhere() {
