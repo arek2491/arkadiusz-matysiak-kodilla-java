@@ -60,7 +60,6 @@ public class DbManagerTestSuite {
         }
         rs.close();
         statement.close();
-
     }
 }
 
