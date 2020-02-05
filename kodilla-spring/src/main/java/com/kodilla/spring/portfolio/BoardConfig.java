@@ -1,6 +1,7 @@
 package com.kodilla.spring.portfolio;
 
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -10,12 +11,16 @@ public class BoardConfig {
 
 
     @Qualifier("toDoList")
+    @Autowired
     private TaskList toDoList;
 
     @Qualifier("inProgressList")
+    @Autowired
+
     private TaskList inProgressList;
 
     @Qualifier("doneList")
+    @Autowired
     private TaskList doneList;
 
     @Bean
