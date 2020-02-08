@@ -11,6 +11,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import java.math.BigDecimal;
+import java.util.ArrayList;
 import java.util.List;
 
 @RunWith(SpringRunner.class)
@@ -19,8 +20,6 @@ public class InvoiceDaoTestSuite {
 
     @Autowired
     private InvoiceDao invoiceDao;
-
-
 
     @Test
     public void testInvoiceDaoSave() {
@@ -46,17 +45,19 @@ public class InvoiceDaoTestSuite {
         invoice.setItems(invoice.getItems());
         invoiceDao.save(invoice);
         int id = invoice.getId();
+
+        List<Item> testList = new ArrayList<>();
+        testList.add(item);
+        testList.add(item2);
+        testList.add(item3);
+
         Assert.assertNotEquals(0, id);
+        Assert.assertEquals(product, item.getProduct());
+        Assert.assertEquals(product2, item2.getProduct());
+        Assert.assertEquals(product3, item3.getProduct());
+        Assert.assertEquals(testList, invoice.getItems());
 
-        //invoiceDao.deleteById(id);
-
-
-
-
-
-
-
-
+        invoiceDao.deleteById(id);
 
     }
 
