@@ -41,7 +41,7 @@ public class Company {
         return name;
     }
 
-    @ManyToMany(cascade = CascadeType.ALL, mappedBy = "companies")
+    @ManyToMany(cascade = CascadeType.PERSIST, mappedBy = "companies")
     public List<Employee> getEmployees() {
         return employees;
     }

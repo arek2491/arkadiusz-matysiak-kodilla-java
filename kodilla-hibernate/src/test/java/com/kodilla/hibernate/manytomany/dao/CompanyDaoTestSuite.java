@@ -1,25 +1,27 @@
 package com.kodilla.hibernate.manytomany.dao;
 
+import com.kodilla.hibernate.invoice.dao.CompanyMockDataProvider;
 import com.kodilla.hibernate.manytomany.Company;
 import com.kodilla.hibernate.manytomany.Employee;
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.junit.runners.AllTests;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
-
-import java.security.AllPermission;
 import java.util.List;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
 public class CompanyDaoTestSuite {
+
+    @Autowired
+    CompanyMockDataProvider companyMockDataProvider;
     @Autowired
     CompanyDao companyDao;
     @Autowired
     EmployeeDao employeeDao;
+
 
     @Test
     public void testSaveManyToMany(){
@@ -64,100 +66,35 @@ public class CompanyDaoTestSuite {
         //} catch (Exception e) {
         //    //do nothing
         //}
-
-
     }
 
     @Test
-    public void testNamedQuerySearchEmployeeBySurname() {
+    public void testNamedQuerySearchEmployeeBySurname() throws NullPointerException {
 
-        Employee johnSmith = new Employee("John", "Smith");
-        Employee stephanieClarckson = new Employee("Stephanie", "Clarckson");
-        Employee lindaKovalsky = new Employee("Linda", "Kovalsky");
+       companyMockDataProvider.createEmployees();
+       companyMockDataProvider.createCompanies();
+       companyMockDataProvider.addEmployeesToCompanies();
+       companyMockDataProvider.addCompaniesToEmployees();
+       companyMockDataProvider.saveToCompanyDao();
 
-        Company softwareMachine = new Company("Software Machine");
-        Company dataMaesters = new Company("Data Maesters");
-        Company greyMatter = new Company("Grey Matter");
+       List<Employee> employeesBySurname = employeeDao.retrieveEmployeeByLastName("Smith");
+       Assert.assertEquals("Smith", employeesBySurname.get(0).getLastname());
 
-        softwareMachine.getEmployees().add(johnSmith);
-        dataMaesters.getEmployees().add(stephanieClarckson);
-        dataMaesters.getEmployees().add(lindaKovalsky);
-        greyMatter.getEmployees().add(johnSmith);
-        greyMatter.getEmployees().add(lindaKovalsky);
-
-        johnSmith.getCompanies().add(softwareMachine);
-        johnSmith.getCompanies().add(greyMatter);
-        stephanieClarckson.getCompanies().add(dataMaesters);
-        lindaKovalsky.getCompanies().add(dataMaesters);
-        lindaKovalsky.getCompanies().add(greyMatter);
-
-        //When
-        companyDao.save(softwareMachine);
-        int softwareMachineId = softwareMachine.getId();
-        companyDao.save(dataMaesters);
-        int dataMaestersId = dataMaesters.getId();
-        companyDao.save(greyMatter);
-        int greyMatterId = greyMatter.getId();
-
-        List<Employee> employeesBySurname = employeeDao.retrieveEmployeeByLastName("Smith");
-
-        try {
-
-            Assert.assertEquals("Smith", employeesBySurname.get(0).getLastname());
-
-            companyDao.deleteById(softwareMachineId);
-            companyDao.deleteById(dataMaestersId);
-            companyDao.deleteById(greyMatterId);
-        } catch (Exception e) {
-
-        }
-
+       companyMockDataProvider.cleanUp();
     }
 
     @Test
-    public void testNamedQuerySearchByThreeFirstCharsOfCompanyName() {
+    public void testNamedQuerySearchByThreeFirstCharsOfCompanyName() throws NullPointerException {
 
-        Employee johnSmith = new Employee("John", "Smith");
-        Employee stephanieClarckson = new Employee("Stephanie", "Clarckson");
-        Employee lindaKovalsky = new Employee("Linda", "Kovalsky");
-
-        Company softwareMachine = new Company("Software Machine");
-        Company dataMaesters = new Company("Data Maesters");
-        Company greyMatter = new Company("Grey Matter");
-
-        softwareMachine.getEmployees().add(johnSmith);
-        dataMaesters.getEmployees().add(stephanieClarckson);
-        dataMaesters.getEmployees().add(lindaKovalsky);
-        greyMatter.getEmployees().add(johnSmith);
-        greyMatter.getEmployees().add(lindaKovalsky);
-
-        johnSmith.getCompanies().add(softwareMachine);
-        johnSmith.getCompanies().add(greyMatter);
-        stephanieClarckson.getCompanies().add(dataMaesters);
-        lindaKovalsky.getCompanies().add(dataMaesters);
-        lindaKovalsky.getCompanies().add(greyMatter);
-
-        //When
-        companyDao.save(softwareMachine);
-        int softwareMachineId = softwareMachine.getId();
-        companyDao.save(dataMaesters);
-        int dataMaestersId = dataMaesters.getId();
-        companyDao.save(greyMatter);
-        int greyMatterId = greyMatter.getId();
+        companyMockDataProvider.createEmployees();
+        companyMockDataProvider.createCompanies();
+        companyMockDataProvider.addEmployeesToCompanies();
+        companyMockDataProvider.addCompaniesToEmployees();
+        companyMockDataProvider.saveToCompanyDao();
 
         List<Company> companyByThreeFirstChar = companyDao.retrieveCompanyByThreeFirstChar("Sof");
+        Assert.assertEquals("Software Machine", companyByThreeFirstChar.get(0).getName());
 
-        try {
-            Assert.assertEquals("Software Machine", companyByThreeFirstChar.get(0).getName());
-            Assert.assertEquals(1, companyByThreeFirstChar.size());
-
-
-            companyDao.deleteById(softwareMachineId);
-            companyDao.deleteById(dataMaestersId);
-            companyDao.deleteById(greyMatterId);
-        } catch (Exception e) {
-
-        }
-
+        companyMockDataProvider.cleanUp();
     }
 }
