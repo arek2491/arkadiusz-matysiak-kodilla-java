@@ -1,6 +1,5 @@
 package com.kodilla.hibernate.manytomany.dao;
 
-import com.kodilla.hibernate.invoice.dao.CompanyMockDataProvider;
 import com.kodilla.hibernate.manytomany.Company;
 import com.kodilla.hibernate.manytomany.Employee;
 import org.junit.Assert;
@@ -79,6 +78,7 @@ public class CompanyDaoTestSuite {
 
        List<Employee> employeesBySurname = employeeDao.retrieveEmployeeByLastName("Smith");
        Assert.assertEquals("Smith", employeesBySurname.get(0).getLastname());
+       Assert.assertEquals(1, employeesBySurname.size());
 
        companyMockDataProvider.cleanUp();
     }
@@ -94,6 +94,7 @@ public class CompanyDaoTestSuite {
 
         List<Company> companyByThreeFirstChar = companyDao.retrieveCompanyByThreeFirstChar("Sof");
         Assert.assertEquals("Software Machine", companyByThreeFirstChar.get(0).getName());
+        Assert.assertEquals(1, companyByThreeFirstChar.size());
 
         companyMockDataProvider.cleanUp();
     }
