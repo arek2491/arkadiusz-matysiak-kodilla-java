@@ -2,10 +2,9 @@ package com.kodilla.hibernate.manytomany.dao;
 
 import com.kodilla.hibernate.manytomany.Company;
 import com.kodilla.hibernate.manytomany.Employee;
-import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.Configuration;
+import org.springframework.stereotype.Component;
 
-@Configuration
+@Component
 public class CompanyMockDataProvider {
 
     private Employee johnSmith;
@@ -19,19 +18,19 @@ public class CompanyMockDataProvider {
     private int dataMaestersId;
     private int greyMatterId;
 
-    @Bean
+
     public void createEmployees() {
         johnSmith = new Employee("John", "Smith");
         stephanieClarckson = new Employee("Stephanie", "Clarckson");
         lindaKovalsky = new Employee("Linda", "Kovalsky");
     }
-    @Bean
+
     public void createCompanies() {
         softwareMachine = new Company("Software Machine");
         dataMaesters = new Company("Data Maesters");
         greyMatter = new Company("Grey Matter");
     }
-    @Bean
+
     public void addEmployeesToCompanies() {
         softwareMachine.getEmployees().add(johnSmith);
         dataMaesters.getEmployees().add(stephanieClarckson);
@@ -40,7 +39,7 @@ public class CompanyMockDataProvider {
         greyMatter.getEmployees().add(lindaKovalsky);
     }
 
-    @Bean
+
     public void addCompaniesToEmployees() {
         johnSmith.getCompanies().add(softwareMachine);
         johnSmith.getCompanies().add(greyMatter);
@@ -49,7 +48,7 @@ public class CompanyMockDataProvider {
         lindaKovalsky.getCompanies().add(greyMatter);
     }
 
-    @Bean
+
     public void saveToCompanyDao() throws NullPointerException{
         try {
             companyDao.save(softwareMachine);
@@ -64,7 +63,7 @@ public class CompanyMockDataProvider {
         }
     }
 
-    @Bean
+
     public void cleanUp() throws NullPointerException {
         try {
             companyDao.deleteById(softwareMachineId);
