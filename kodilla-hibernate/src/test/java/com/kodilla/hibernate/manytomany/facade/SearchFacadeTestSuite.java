@@ -22,8 +22,7 @@ public class SearchFacadeTestSuite {
     public void searchingEmployeeByStringFragmentTest() throws SearchingException {
         facadeMockDataProvider.createEmployees();
         facadeMockDataProvider.saveToEmployeeDao();
-        searchFacade.searchEmployeeByStringFragment("sky");
-        List<Employee> exampleList = searchFacade.getSearchEmployeeList();
+        List<Employee> exampleList = searchFacade.searchEmployeeByStringFragment("sky");
 
         Assert.assertEquals(1, exampleList.size());
         Assert.assertEquals("Kovalsky", exampleList.get(0).getLastname());
@@ -37,8 +36,7 @@ public class SearchFacadeTestSuite {
 
         facadeMockDataProvider.createCompanies();
         facadeMockDataProvider.saveToCompanyDao();
-        searchFacade.searchCompanyByStringFragment("war");
-        List<Company> exampleList = searchFacade.getSearchCompanyList();
+        List<Company> exampleList = searchFacade.searchCompanyByStringFragment("war");
 
         Assert.assertEquals(1, exampleList.size());
         Assert.assertEquals("Software Machine", exampleList.get(0).getName());
