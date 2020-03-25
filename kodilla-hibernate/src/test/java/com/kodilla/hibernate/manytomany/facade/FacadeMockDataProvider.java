@@ -1,27 +1,30 @@
-package com.kodilla.hibernate.manytomany.dao;
+package com.kodilla.hibernate.manytomany.facade;
 
 import com.kodilla.hibernate.manytomany.Company;
 import com.kodilla.hibernate.manytomany.Employee;
+import com.kodilla.hibernate.manytomany.dao.CompanyDao;
+import com.kodilla.hibernate.manytomany.dao.EmployeeDao;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 @Component
-public class CompanyMockDataProvider {
-
+public class FacadeMockDataProvider {
     private Employee johnSmith;
     private Employee stephanieClarckson;
     private Employee lindaKovalsky;
     private Company softwareMachine;
     private Company dataMaesters;
     private Company greyMatter;
-    private CompanyDao companyDao;
-    private EmployeeDao employeeDao;
     private int softwareMachineId;
     private int dataMaestersId;
     private int greyMatterId;
     private int johnSmithId;
     private int stephanieClarksonId;
     private int lindaKovalskyId;
+    @Autowired
+    CompanyDao companyDao;
+    @Autowired
+    EmployeeDao employeeDao;
 
     public void createEmployees() {
         johnSmith = new Employee("John", "Smith");
@@ -34,24 +37,6 @@ public class CompanyMockDataProvider {
         dataMaesters = new Company("Data Maesters");
         greyMatter = new Company("Grey Matter");
     }
-
-    public void addEmployeesToCompanies() {
-        softwareMachine.getEmployees().add(johnSmith);
-        dataMaesters.getEmployees().add(stephanieClarckson);
-        dataMaesters.getEmployees().add(lindaKovalsky);
-        greyMatter.getEmployees().add(johnSmith);
-        greyMatter.getEmployees().add(lindaKovalsky);
-    }
-
-
-    public void addCompaniesToEmployees() {
-        johnSmith.getCompanies().add(softwareMachine);
-        johnSmith.getCompanies().add(greyMatter);
-        stephanieClarckson.getCompanies().add(dataMaesters);
-        lindaKovalsky.getCompanies().add(dataMaesters);
-        lindaKovalsky.getCompanies().add(greyMatter);
-    }
-
 
     public void saveToCompanyDao() throws NullPointerException {
         try {
@@ -80,7 +65,7 @@ public class CompanyMockDataProvider {
         }
     }
 
-    public void cleanUp() throws NullPointerException {
+    public void cleanUpCompanyDao() throws NullPointerException {
         try {
             companyDao.deleteById(softwareMachineId);
             companyDao.deleteById(dataMaestersId);
@@ -90,5 +75,13 @@ public class CompanyMockDataProvider {
         }
     }
 
+    public void cleanUpEmployeeDao() throws NullPointerException {
+        try {
+            employeeDao.deleteById(johnSmithId);
+            employeeDao.deleteById(stephanieClarksonId);
+            employeeDao.deleteById(lindaKovalskyId);
+        } catch(Exception e) {
 
+        }
+    }
 }

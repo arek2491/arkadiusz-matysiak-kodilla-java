@@ -92,6 +92,7 @@ public class CompanyDaoTestSuite {
         companyMockDataProvider.addCompaniesToEmployees();
         companyMockDataProvider.saveToCompanyDao();
 
+
         List<Company> companyByThreeFirstChar = companyDao.retrieveCompanyByThreeFirstChar("Sof");
         Assert.assertEquals("Software Machine", companyByThreeFirstChar.get(0).getName());
         Assert.assertEquals(1, companyByThreeFirstChar.size());

@@ -4,11 +4,18 @@ import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.util.ArrayList;
 import java.util.List;
+@NamedQueries({
+        @NamedQuery(
+                name = "Employee.retrieveEmployeeByLastName",
+                query = "FROM Employee WHERE lastname = :LASTNAME"
+        ),
+        @NamedQuery(
+                name = "Employee.retrieveEmployeeByStringFragment",
+                query = "FROM Employee WHERE lastname like concat('%', :LASTNAME, '%')"
 
-@NamedQuery(
-        name = "Employee.retrieveEmployeeByLastName",
-        query = "FROM Employee WHERE lastname = :LASTNAME"
-)
+        )
+})
+
 
 @Entity
 @Table(name = "EMPLOYEES")
@@ -70,5 +77,13 @@ public class Employee {
 
     private void setLastname(String lastname) {
         this.lastname = lastname;
+    }
+
+    @Override
+    public String toString() {
+        return "Employee{" +
+                "firstname='" + firstname + '\'' +
+                ", lastname='" + lastname + '\'' +
+                '}';
     }
 }

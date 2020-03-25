@@ -5,13 +5,19 @@ import javax.validation.constraints.NotNull;
 import java.util.ArrayList;
 import java.util.List;
 
+        @NamedNativeQuery(
+                name = "Company.retrieveCompanyByThreeFirstChar",
+                query = "SELECT * FROM COMPANIES" +
+                        " WHERE LEFT(COMPANY_NAME, 3) = :CUTNAME",
+                resultClass = Company.class
+        )
+        @NamedQuery(
+                name = "Company.retrieveCompanyByStringFragment",
+                query = "FROM Company WHERE company_name like concat('%', :CUTNAME, '%')"
+        )
 
-@NamedNativeQuery(
-        name = "Company.retrieveCompanyByThreeFirstChar",
-        query = "SELECT * FROM COMPANIES" +
-                " WHERE LEFT(COMPANY_NAME, 3) = :CUTNAME",
-        resultClass = Company.class
-)
+
+
 
 @Entity
 @Table(name = "COMPANIES")
@@ -57,4 +63,11 @@ public class Company {
     private void setName(String name) {
         this.name = name;
     }
-}
+
+            @Override
+            public String toString() {
+                return "Company{" +
+                        "name='" + name + '\'' +
+                        '}';
+            }
+        }
