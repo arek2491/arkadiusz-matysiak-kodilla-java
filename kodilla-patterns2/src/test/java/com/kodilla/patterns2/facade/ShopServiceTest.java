@@ -14,7 +14,6 @@ import java.math.BigDecimal;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
-
 public class ShopServiceTest {
     @Autowired
     private ShopService shopService;
