@@ -5,12 +5,10 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import org.openqa.selenium.By;
-
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.Select;
-import org.openqa.selenium.support.ui.WebDriverWait;
+
 
 import java.util.Random;
 import java.util.stream.Collectors;
@@ -113,7 +111,7 @@ public class CrudAppTestSuite {
 
         Thread.sleep(3000);
 
-        driverTrello.findElement(By.id("password")).sendKeys("Jamaszka2491");
+        driverTrello.findElement(By.id("password")).sendKeys("password");
         driverTrello.findElement(By.id("login-submit")).submit();
 
         Thread.sleep(7000);
